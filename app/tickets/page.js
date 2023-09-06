@@ -1,5 +1,7 @@
 async function getPosts() {
-  const res = await fetch("http://localhost:3000/api/posts");
+  const res = await fetch("http://localhost:3000/api/posts", {
+    next: { revalidate: 30 },
+  });
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
